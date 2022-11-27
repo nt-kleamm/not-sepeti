@@ -1,3 +1,102 @@
+:root{
+    /* creating my variables in css   */
+    --main-color:rgba(83, 82, 237,1.0);
+    --main-color-light:rgba(83, 82, 237,0.5);
+    --accent-color:rgba(30, 144, 255,1.0);
+    --accent-color-light:rgba(30, 144, 255,0.5);
+    --second-color:rgb(6, 245, 105);
+    --third-color:rgba(12, 36, 97,1.0);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body{
     font-family: 'Bebas Neue', cursive;
+    background-image:linear-gradient(to bottom right, var(--main-color), var(--second-color));
+    background-repeat: no-repeat;
+    min-height: 100vh;
 }
+
+.main-title{
+    font-size: 2rem;
+}
+
+.header, .gorev-form{
+    min-height: 20vh;
+    margin: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-item{
+    padding: 0.5rem;
+    font-size: 1.5rem;
+    border: none;
+    background-color: white;
+    outline: none;
+}
+
+.btn-gorev-ekle{
+    color:var(--third-color);
+    cursor:pointer;
+}
+
+.btn-gorev-ekle:hover{
+    color: white;
+    background-color: var(--third-color);
+}
+
+.gorev-container{
+    display:flex;
+    /* to make it in a column added flex-dircetion commend*/
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.gorev-listesi{
+    list-style: none;
+    min-width: 60%;
+/*     background-color: red; */
+}
+
+.gorev-item{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: .5rem;
+    font-size: 1.2rem;
+    background-color: white;
+}
+
+.gorev-tanim{
+    flex:1;
+    padding: 1rem;
+}
+
+.gorev-btn{
+    background-color: var(--accent-color);
+    outline: none;
+    border: none;
+    font-size: 1.3rem;
+    padding: 1.2rem;
+}
+
+.gorev-btn-sil{
+    background-color: var(--main-color);
+}
+
+.gorev-btn-tamamlandi{
+    background-color: var(--second-color);
+}
+
+.gorev-tamamlandi{
+    text-decoration: line-through;
+    opacity: 0.5 ;
+}
+
