@@ -1,0 +1,1 @@
+Hi this is gonna be a new project and it will recover some basic codes that i learned in basic. thanks:)
