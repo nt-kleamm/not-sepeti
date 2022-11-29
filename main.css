@@ -72,6 +72,7 @@ body{
     margin: .5rem;
     font-size: 1.2rem;
     background-color: white;
+    transition: .5s ease-in-out;
 }
 
 .gorev-tanim{
@@ -100,3 +101,12 @@ body{
     opacity: 0.5 ;
 }
 
+
+/** when you want to delete or set the element as completed if you click on logo it doesn't work cuz it has pointer event, it's a way to avoid this problem IMPORTANT!*/
+.far{
+    pointer-events: none;
+}
+
+.kaybol{
+    transform: scale(0);
+}
