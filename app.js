@@ -3,26 +3,66 @@ const yeniGorevEkleBtn = document.querySelector('.btn-gorev-ekle');
 const gorevListesi = document.querySelector('.gorev-listesi');
 
 yeniGorevEkleBtn.addEventListener('click', gorevEkle);
-gorevListesi.addEventListener('click', gorevSilTamamla)
+gorevListesi.addEventListener('click', gorevSilTamamla);
+document.addEventListener('DOMContentLoaded', localStorageOku)
 
-function gorevSilTamamla (e) {
+function gorevSilTamamla(e) {
     const tiklanilanEleman = e.target
-    
+
     // when you click the logo it doesn't get click function, to avoid it i decided to use that technique
     // you can do that in another way with using css code which is 'pointer-events: none;'
-    if(tiklanilanEleman.classList.contains('gorev-btn-tamamlandi') || tiklanilanEleman.classList.contains('fa-regular')){
+    if (tiklanilanEleman.classList.contains('gorev-btn-tamamlandi') || tiklanilanEleman.classList.contains('fa-regular')) {
+
         tiklanilanEleman.parentElement.classList.toggle("gorev-tamamlandi")
     }
-    if(tiklanilanEleman.classList.contains('gorev-btn-sil') || tiklanilanEleman.classList.contains('fa-solid')){
-        tiklanilanEleman.parentElement.classList.toggle('kaybol')
-        // kaybolma efekti bittikten sonra silme islemi yapilsin diye asagidaki kod yazildi eger bu kod olmasaydi element direk silinirdi ve animasyon olmazdi
-        tiklanilanEleman.parentElement.addEventListener('transitionend', function () { tiklanilanEleman.parentElement.remove(); })
+    if (tiklanilanEleman.classList.contains('gorev-btn-sil') || tiklanilanEleman.classList.contains('fa-solid')) {
+
+        if (confirm("are u sure ma'am")) {
+            tiklanilanEleman.parentElement.classList.toggle('kaybol')
+
+            const silinecekGorev = tiklanilanEleman.parentElement.children[0].innerText;
+            localStorageSil(silinecekGorev);
+
+            // kaybolma efekti bittikten sonra silme islemi yapilsin diye asagidaki kod yazildi eger bu kod olmasaydi element direk silinirdi ve animasyon olmazdi
+            tiklanilanEleman.parentElement.addEventListener('transitionend', function () { tiklanilanEleman.parentElement.remove(); })
+        }
     }
 }
 
 function gorevEkle(e) {
     e.preventDefault();
 
+    if (yeniGorev.value.length > 0) {
+
+        gorevItemOlustur(yeniGorev.value)
+
+        //applyin to local storage
+        localStorageKaydet(yeniGorev.value)
+
+        // empty the value 
+        yeniGorev.value = ''
+    } else {
+        alert("it can't be empty")
+    }
+
+}
+
+function localStorageKaydet(yeniGorev) {
+    let gorevler = localStorageArrayeDonustur()
+
+    gorevler.push(yeniGorev);
+    localStorage.setItem('gorevler', JSON.stringify(gorevler));
+}
+
+function localStorageOku() {
+    let gorevler = localStorageArrayeDonustur()
+
+    gorevler.forEach(function (gorev) {
+        gorevItemOlustur(gorev);
+    });
+}
+
+function gorevItemOlustur(gorev) {
     // creating main div 
     const gorevDiv = document.createElement('div');
     gorevDiv.classList.add('gorev-item');
@@ -30,7 +70,7 @@ function gorevEkle(e) {
     // creating li 
     const gorevLi = document.createElement('li');
     gorevLi.classList.add('gorev-tanim')
-    gorevLi.innerText = yeniGorev.value;
+    gorevLi.innerText = gorev;
     // appending childe div -> li 
     gorevDiv.appendChild(gorevLi)
 
@@ -50,9 +90,28 @@ function gorevEkle(e) {
     // appending child to div -> button delete
     gorevDiv.appendChild(gorevSilBtn)
 
-    // empty the value 
-    yeniGorev.value = ''
-
     // adding li to our unorder list 
     gorevListesi.appendChild(gorevDiv)
+}
+
+function localStorageSil(gorev) {
+    let gorevler = localStorageArrayeDonustur();
+
+    const silinecekElementIndex = gorevler.indexOf(gorev);
+    console.log(silinecekElementIndex)
+    gorevler.splice(silinecekElementIndex, 1);
+
+    localStorage.setItem('gorevler', JSON.stringify(gorevler));
+}
+
+function localStorageArrayeDonustur() {
+    let gorevler;
+
+    if (localStorage.getItem('gorevler') == null) {
+        gorevler = [];
+    } else {
+        gorevler = JSON.parse(localStorage.getItem('gorevler'));
+    }
+
+    return gorevler;
 }
