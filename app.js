@@ -10,7 +10,7 @@ function gorevSilTamamla(e) {
     const tiklanilanEleman = e.target
 
     // when you click the logo it doesn't get click function, to avoid it i decided to use that technique
-    // you can do that in another way with using css code which is 'pointer-events: none;'
+    // you can do that in another way with using css code which is 'pointer-events: none;
     if (tiklanilanEleman.classList.contains('gorev-btn-tamamlandi') || tiklanilanEleman.classList.contains('fa-regular')) {
 
         tiklanilanEleman.parentElement.classList.toggle("gorev-tamamlandi")
@@ -115,3 +115,18 @@ function localStorageArrayeDonustur() {
 
     return gorevler;
 }
+
+/*? new ones */ 
+function allowDrop(ev) {
+    ev.preventDefault();
+  }
+  
+function drag(ev) {
+    ev.dataTransfer.setData("text", ev.target.id);
+  }
+  
+function drop(ev) {
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("text");
+    ev.target.appendChild(document.getElementById(data));
+  }

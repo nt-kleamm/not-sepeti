@@ -1,31 +1,38 @@
-:root{
+:root {
     /* creating my variables in css   */
-    --main-color:rgba(83, 82, 237,1.0);
-    --main-color-light:rgba(83, 82, 237,0.5);
-    --accent-color:rgba(30, 144, 255,1.0);
-    --accent-color-light:rgba(30, 144, 255,0.5);
-    --second-color:rgb(6, 245, 105);
-    --third-color:rgba(12, 36, 97,1.0);
+    --main-color: rgba(83, 82, 237, 1.0);
+    --main-color-light: rgba(83, 82, 237, 0.5);
+    --accent-color: rgba(30, 144, 255, 1.0);
+    --accent-color-light: rgba(30, 144, 255, 0.5);
+    --second-color: rgb(6, 245, 105);
+    --third-color: rgba(12, 36, 97, 1.0);
 }
 
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body{
+body {
     font-family: 'Bebas Neue', cursive;
-    background-image:linear-gradient(to bottom right, var(--main-color), var(--second-color));
+    background-image: linear-gradient(to bottom right, var(--main-color), var(--second-color));
     background-repeat: no-repeat;
     min-height: 100vh;
 }
 
-.main-title{
+/**new code  */
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+
+.main-title {
     font-size: 2rem;
 }
 
-.header, .gorev-form{
+.header {
     min-height: 20vh;
     margin: 0.5rem;
     display: flex;
@@ -33,7 +40,16 @@ body{
     align-items: center;
 }
 
-.form-item{
+/** newcode */
+.gorev-form {
+    min-height: 10vh;
+    margin: .5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-item {
     padding: 0.5rem;
     font-size: 1.5rem;
     border: none;
@@ -41,31 +57,35 @@ body{
     outline: none;
 }
 
-.btn-gorev-ekle{
-    color:var(--third-color);
-    cursor:pointer;
+.btn-gorev-ekle {
+    color: var(--third-color);
+    cursor: pointer;
 }
 
-.btn-gorev-ekle:hover{
+.btn-gorev-ekle:hover {
     color: white;
     background-color: var(--third-color);
 }
 
-.gorev-container{
-    display:flex;
-    /* to make it in a column added flex-dircetion commend*/
+/*? He doesn't use that class  */
+/* to make it in a column added flex-dircetion commend*/
+/* .gorev-container {
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
+} */
 
-.gorev-listesi{
+.gorev-listesi {
     list-style: none;
     min-width: 60%;
-/*     background-color: red; */
+    /*     background-color: red; */
+    border-style: dotted;
+    min-height: 400px;
+    margin: 0px 5px;
 }
 
-.gorev-item{
+.gorev-item {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -75,38 +95,119 @@ body{
     transition: .5s ease-in-out;
 }
 
-.gorev-tanim{
-    flex:1;
+.gorev-tanim {
+    flex: 1;
     padding: 1rem;
 }
 
-.gorev-btn{
+.gorev-btn {
     background-color: var(--accent-color);
     outline: none;
     border: none;
     font-size: 1.3rem;
     padding: 1.2rem;
+    cursor: pointer;
 }
 
-.gorev-btn-sil{
+.gorev-btn-sil {
     background-color: var(--main-color);
 }
 
-.gorev-btn-tamamlandi{
+.gorev-btn-tamamlandi {
     background-color: var(--second-color);
 }
 
-.gorev-tamamlandi{
+.gorev-tamamlandi {
     text-decoration: line-through;
-    opacity: 0.5 ;
+    opacity: 0.5;
 }
 
 
 /** when you want to delete or set the element as completed if you click on logo it doesn't work cuz it has pointer event, it's a way to avoid this problem IMPORTANT!*/
-.far{
+.far {
     pointer-events: none;
 }
 
-.kaybol{
+.kaybol {
     transform: scale(0);
+}
+
+/** some new css codes */
+
+
+
+.alert {
+    margin-top: 20px;
+    background-color: #2196F3;
+    padding: 20px;
+    color: white;
+    opacity: 1;
+    transition: opacity 0.6s;
+    margin-bottom: 15px;
+
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 43px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.warning {
+    background-color: #ff9800;
+    display: none;
+}
+
+.closebtn:hover {
+    color: black;
+}
+
+/*end: alert */
+/* 
+#ul1,
+#ul2,
+#ul3,
+#ul4 {
+    border-style: dotted;
+    min-height: 400px;
+    margin: 0px 5px;
+} */
+
+@media all and (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .gorev-container {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+
+    }
+
+    .gorev-listesi {
+        list-style: none;
+        width: 80%;
+    }
+
+    .trash-container {
+        display: none;
+    }
+
+    .warning {
+        margin-top: 20px;
+        display: block;
+        display: flex;
+        justify-content: space-around;
+    }
 }

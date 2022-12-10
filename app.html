@@ -26,20 +26,89 @@
         </h1>
     </header>
 
-    <form class="gorev-form" action="#">
-        <input type="text" class="form-item input-gorev" placeholder="Notu Giriniz">
-        <button class="form-item btn-gorev-ekle" type="submit">
-            <i class="fa-solid fa-plus"></i>
-        </button>
-    </form>
+    <!--* if i want 4 diffrent type of segment i need to make them together to do that i need to create new div and i need to giv class which includes display:flex code -->
+    <div class="container">
 
-    <div class="gorev-container">
-        <ul class="gorev-listesi">
-        
-        </ul>
+        <div id="firstDiv" class="gorev-container">
+
+            <form class="gorev-form" action="#">
+                <input type="text" class="form-item input-gorev" placeholder="Notu Giriniz NO/1">
+                <button class="form-item btn-gorev-ekle" type="submit">
+                    <i class="fa-solid fa-plus"></i>
+                </button>
+            </form>
+
+            <ul class="gorev-listesi" id="ul1" ondrop="drop(event)" ondragover="allowDrop(event)">
+
+            </ul>
+
+        </div>
+
+        <div id="secondDiv">
+
+            <form class="gorev-form" action="#">
+                <input type="text" class="form-item input-gorev" placeholder="Notu Giriniz NO/2">
+                <button class="form-item btn-gorev-ekle" type="submit">
+                    <i class="fa-solid fa-plus"></i>
+                </button>
+            </form>
+
+            <ul class="gorev-listesi" id="ul2" ondrop="drop(event)" ondragover="allowDrop(event)">
+
+            </ul>
+
+        </div>
+
+        <div id="thirdDiv">
+
+            <form class="gorev-form" action="#">
+                <input type="text" class="form-item input-gorev" placeholder="Notu Giriniz NO/3">
+                <button class="form-item btn-gorev-ekle" type="submit">
+                    <i class="fa-solid fa-plus"></i>
+                </button>
+            </form>
+
+            <ul class="gorev-listesi" id="ul3" ondrop="drop(event)" ondragover="allowDrop(event)">
+
+            </ul>
+
+        </div>
+
+        <div id="fourthDiv">
+
+            <form class="gorev-form" action="#">
+                <input type="text" class="form-item input-gorev" placeholder="Notu Giriniz NO/4">
+                <button class="form-item btn-gorev-ekle" type="submit">
+                    <i class="fa-solid fa-plus"></i>
+                </button>
+            </form>
+
+            <ul class="gorev-listesi" id="ul4" ondrop="drop(event)" ondragover="allowDrop(event)">
+
+            </ul>
+
+        </div>
+
     </div>
+
+
+
+    <!--* warning for user -->
+    <div class="alert info">
+        <p><strong>Bilgi!</strong> Görevleri sürükleyip bırakarak gruplar arasında taşıyabilirsiniz.</p>
+        <span class="closebtn">&times;</span>
+    </div>
+
+    <div class="alert warning">
+        <p><strong>Uyarı!</strong> Sürükle-bırak özelliğini daha işlevsel şekilde kullanabilmek için sekmeyi büyütünüz
+            veya bilgisayar ile siteye erişiniz. </p>
+        <span class="closebtn">&times;</span>
+    </div>
+
+
     <!-- adding my js code -->
-    <script src="app.js"></script>
+   <!--  <script src="app.js"></script> -->
+    <script src="new.js"></script>
 </body>
 
 </html>
